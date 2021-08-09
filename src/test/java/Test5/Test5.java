@@ -5,6 +5,8 @@ import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 import pages.ToDoPage;
 
+import static org.testng.Assert.assertEquals;
+
 public class Test5 extends BaseTests {
 
     @Test
@@ -19,6 +21,9 @@ public class Test5 extends BaseTests {
         todoPage.writeToDoText(firstTodo + Keys.ENTER);
         todoPage.writeToDoText(secondTodo + Keys.ENTER);
         todoPage.writeToDoText(thirdTodo + Keys.ENTER);
+        todoPage.toggleCompleted();
+        assertEquals(todoPage.getSizeOfToDoList(),0,"There are todo's on completed while there shouldn't be");
+
 
 
 
