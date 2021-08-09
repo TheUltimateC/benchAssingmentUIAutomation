@@ -22,7 +22,7 @@ public class ToDoPage {
     private By active = By.linkText("Active");
     private By todoText = By.tagName("label");
     private By todoEdit = By.className("edit");
-    private By itemsLeft = By.tagName("span");
+    private By itemsLeft = By.cssSelector("footer span");
 
 
     public ToDoPage(WebDriver driver){
@@ -98,7 +98,7 @@ public class ToDoPage {
     }
 
     public String getItemsLeft(){
-        var spanItemsLeft = driver.findElement(By.tagName("footer")).findElement(itemsLeft);
+        var spanItemsLeft = driver.findElement(itemsLeft);
         return spanItemsLeft.getText();
     }
 }

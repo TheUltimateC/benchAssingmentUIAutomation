@@ -14,8 +14,8 @@ public class Test5 extends BaseTests {
     public void createToDoTest(){
 
         //ToDoPage todoPage = homePage.clickVanillaJS();
-        //ToDoPage todoPage = homePage.clickTypescript();
-        ToDoPage todoPage = homePage.clickEmberJS();
+        ToDoPage todoPage = homePage.clickTypescript();
+        //ToDoPage todoPage = homePage.clickEmberJS();
         String firstTodo = "“Automation is fun!”";
         String secondTodo = "“Automation is fun2!”";
         String thirdTodo = "“Automation is fun3!”";
