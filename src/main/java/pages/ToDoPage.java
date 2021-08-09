@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,7 @@ public class ToDoPage {
     private By active = By.linkText("Active");
     private By todoText = By.tagName("label");
     private By todoEdit = By.className("edit");
+    private By itemsLeft = By.tagName("span");
 
 
     public ToDoPage(WebDriver driver){
@@ -32,9 +34,17 @@ public class ToDoPage {
         driver.findElement(toDoTextInput).sendKeys(text);
     }
 
+    public boolean isToDoListPresent(){
+        return driver.findElements(toDoList).size()>0;
+    }
+
     public List<WebElement> getToDoList(){
-        var listOfToDo = driver.findElement(toDoList);
-        List<WebElement> toDos = listOfToDo.findElements(li);
+
+        List<WebElement> toDos = new ArrayList<>();
+        if(isToDoListPresent()){
+            var listOfToDo = driver.findElement(toDoList);
+            toDos = listOfToDo.findElements(li);
+        }
         return toDos;
     }
 
@@ -87,4 +97,8 @@ public class ToDoPage {
 
     }
 
+    public String getItemsLeft(){
+        var spanItemsLeft = driver.findElement(By.tagName("footer")).findElement(itemsLeft);
+        return spanItemsLeft.getText();
+    }
 }
